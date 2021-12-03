@@ -62,3 +62,20 @@ border: 1px solid #394857 !important;
   color: white !important;
   width: 100px !important;
 }
+/* question  */
+.qnBox .optionsBox{
+
+  min-height: 300px;
+  padding: 5px !important;
+}
+.qnBox .optionBox{
+  background-color: #F3F3FB;
+  min-height: 50px;
+  margin: 5px;
+  border-radius: 10px;
+  /* box-shadow:rgba(100, 100, 111, 0.2) 0px 7px 29px 0px ; */
+  border: 1px solid #c7c7ee;
+}
+.qnBox .optionBox:hover{
+  background-color:#eeeefa;
+}
