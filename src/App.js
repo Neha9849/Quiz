@@ -11,6 +11,7 @@ function App() {
       setCategory={setCategory}
       setLevel={setLevel}
       setQuestions={setQuestions}
+      setCount={setCount}
       count={count}
       category={category}
       level={level}

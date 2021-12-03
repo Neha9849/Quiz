@@ -73,9 +73,17 @@ border: 1px solid #394857 !important;
   min-height: 50px;
   margin: 5px;
   border-radius: 10px;
-  /* box-shadow:rgba(100, 100, 111, 0.2) 0px 7px 29px 0px ; */
   border: 1px solid #c7c7ee;
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 .qnBox .optionBox:hover{
   background-color:#eeeefa;
+}
+.selected{
+  background-color: grey;
+}
+label{
+  padding:10px !important;
 }

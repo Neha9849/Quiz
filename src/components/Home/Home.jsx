@@ -22,7 +22,7 @@ const Home = (props) => {
               setQuestions={props.setQuestions}
             />
           }></Route>
-        <Route path='/questions' element={<Question questions={props.questions}/>}></Route>
+        <Route path='/questions' element={<Question questions={props.questions} setCount={props.setCount} count={props.count}/>}></Route>
       </Routes>
     </Router>
   );
