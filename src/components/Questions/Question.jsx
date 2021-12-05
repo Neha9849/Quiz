@@ -4,7 +4,12 @@ import { useState } from "react";
 const Question = (props) => {
   // question number state
   let [number, setNumber] = useState(0);
-
+  let [checkAnswers, setCheckAnswers] = useState(false);
+  const checkAnswersFxn = () => {
+    setCheckAnswers(true);
+    const checkAnswersbtn = document.getElementById('checkAnswers')
+    checkAnswersbtn.disabled=true;
+  };
   const nextQuestion = () => {
     if (number < 10) {
       let checkedAns = "";
@@ -38,98 +43,117 @@ const Question = (props) => {
     console.log(array);
   }
 
-  // if (number < 10) {
-  //   let optionsArray = [
-  //     props.questions.results[number].correct_answer,
-  //     ...props.questions.results[number].incorrect_answers,
-  //   ];
-  //   console.log(optionsArray);
-  //   shuffleArray(optionsArray);
-  //   return (
-  //     <div>
-  //       <div className='category'>
-  //         <div className='box'>
-  //           <div className='qnBox'>
-  //             <h3>{props.questions.results[number].question}</h3>
+  if (number < 10) {
+    let optionsArray = [
+      props.questions.results[number].correct_answer,
+      ...props.questions.results[number].incorrect_answers,
+    ];
+    console.log(optionsArray);
+    shuffleArray(optionsArray);
+    return (
+      <div>
+        <div className='category'>
+          <div className='box'>
+            <div className='qnBox'>
+              <h3>{props.questions.results[number].question}</h3>
 
-  //             <div className='optionsBox'>
-  //               <label htmlFor='1' className='optionBox'>
-  //                 <input
-  //                   type='radio'
-  //                   name='optoin'
-  //                   id='1'
-  //                   className='option'
-  //                   value={optionsArray[0]}
-  //                 />
-  //                 {optionsArray[0]}
-  //               </label>
-  //               <label htmlFor='2' className='optionBox'>
-  //                 <input
-  //                   type='radio'
-  //                   name='optoin'
-  //                   id='2'
-  //                   className='option'
-  //                   value={optionsArray[1]}
-  //                 />
-  //                 {optionsArray[1]}
-  //               </label>
-  //               <label htmlFor='3' className='optionBox'>
-  //                 <input
-  //                   type='radio'
-  //                   name='optoin'
-  //                   id='3'
-  //                   className='option'
-  //                   value={optionsArray[2]}
-  //                 />
-  //                 {optionsArray[2]}
-  //               </label>
-  //               <label htmlFor='4' className='optionBox'>
-  //                 <input
-  //                   type='radio'
-  //                   name='optoin'
-  //                   id='4'
-  //                   className='option'
-  //                   value={optionsArray[3]}
-  //                 />
-  //                 {optionsArray[3]}
-  //               </label>
-  //             </div>
-  //           </div>
-  //           <div className='nextBtn'>
-  //             <button className='btn btnoutline-dark' onClick={nextQuestion}>
-  //               Next
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
+              <div className='optionsBox'>
+                <label htmlFor='1' className='optionBox'>
+                  <input
+                    type='radio'
+                    name='optoin'
+                    id='1'
+                    className='option'
+                    value={optionsArray[0]}
+                  />
+                  {optionsArray[0]}
+                </label>
+                <label htmlFor='2' className='optionBox'>
+                  <input
+                    type='radio'
+                    name='optoin'
+                    id='2'
+                    className='option'
+                    value={optionsArray[1]}
+                  />
+                  {optionsArray[1]}
+                </label>
+                <label htmlFor='3' className='optionBox'>
+                  <input
+                    type='radio'
+                    name='optoin'
+                    id='3'
+                    className='option'
+                    value={optionsArray[2]}
+                  />
+                  {optionsArray[2]}
+                </label>
+                <label htmlFor='4' className='optionBox'>
+                  <input
+                    type='radio'
+                    name='optoin'
+                    id='4'
+                    className='option'
+                    value={optionsArray[3]}
+                  />
+                  {optionsArray[3]}
+                </label>
+              </div>
+            </div>
+            <div className='nextBtn'>
+              <button className='btn btnoutline-dark' onClick={nextQuestion}>
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+else{
   return (
     <div>
       <div className='results category'>
-        <div className='box resultsbox'>
-          
-           
-              {props.count > 5 ? (
-                <h1 className='text-center'>Congratulations,</h1>
-              ) : (
-                <h1 className='text-center'>Well tried,</h1>
-              )}
-             
-                <h4 className='m-4 text-center'>
-                  You scored {props.count} out of 10
-                </h4>
-                <div className="btns">
-                <Link to='/'><button className='btn m-3'>Retake Quiz</button></Link>
-                <button className='btn m-3'>Check Answers</button>
-                </div>
-             
+        
+          <div className='box resultsbox'>
+            {props.count > 5 ? (
+              <h1 className='text-center'>Congratulations,</h1>
+            ) : (
+              <h1 className='text-center'>Well tried,</h1>
+            )}
+
+            <h4 className='m-4 text-center'>
+              You scored {props.count} out of 10
+            </h4>
+            <div className='btns'>
+              <Link to='/'>
+                <button className='btn m-3'>Retake Quiz</button>
+              </Link>
+              <button className='btn m-3' onClick={checkAnswersFxn} id="checkAnswers">
+                Check Answers
+              </button>
+            </div>
         </div>
+        {checkAnswers ? (
+          <div className='answersBox'>
+            <h4 className='text-center'>Answers</h4>
+            <ol>
+              {props.questions.results.map((i) => (
+                <li>
+                  <b>{i.question}</b>
+                  <p>{i.correct_answer}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ) : (
+          <h1></h1>
+        )}
       </div>
     </div>
   );
+}
+ 
 };
 
 export default Question;

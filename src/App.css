@@ -34,6 +34,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 color: #394857 !important;
+word-wrap: break-word;
 }
 .category .box{
   padding: 10px;
@@ -81,10 +82,19 @@ border: 1px solid #394857 !important;
 .qnBox .optionBox:hover{
   background-color:#eeeefa;
 }
+.qnBox h3{
+  font-family:'Baloo Tamma 2', cursive ;
+}
 .selected{
   background-color: grey;
 }
 /* result page */
+.results{
+  flex-direction: column !important;
+}
+.resultbox{
+  min-height: 100vh;
+}
 .results h4{
   font-family: 'Baloo Tamma 2', cursive;
 }
@@ -92,4 +102,13 @@ border: 1px solid #394857 !important;
  
   display: flex;
   justify-content: center;
+}
+.results .answersBox{
+
+  margin: 20px !important;
+  width: 80vw;
+
+}
+.resultsbox{
+  margin: 50px;
 }
