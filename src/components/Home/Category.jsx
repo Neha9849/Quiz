@@ -42,7 +42,7 @@ const Category = (props) => {
         </div>
         <div className="nextBtn">
             <Link to='/level'>
-            <button className="btn btnoutline-dark">Next</button>
+            <button className="btn btn-outline-dark">Next</button>
             </Link>
          
         </div>

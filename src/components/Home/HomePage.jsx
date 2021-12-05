@@ -6,7 +6,7 @@ const HomePage = () => {
       <div>
         <h1 className='text-monospace'>Welcome to Quizy</h1>
         <Link to='/category'>
-          <button className='btn btn-outline-dark'>Get Started</button>
+          <button className='btn btn-outline-dark'>Take Quiz</button>
         </Link>
       </div>
     </div>

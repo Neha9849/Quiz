@@ -1,34 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import QuestionBox from "./QuestionBox";
 import { useState } from "react";
 const Question = (props) => {
   // question number state
-  let [number, setNumber] = useState(1);
+  let [number, setNumber] = useState(0);
+
   const nextQuestion = () => {
-    let checkedAns=''
-    let array = [1, 2, 3, 4];
-     array.map((e)=>{
-       let el=document.getElementById(e)
-       console.log(el)
-       if(el.checked){
-        checkedAns=el.value;
-         console.log(checkedAns)
-         el.checked=false;
-       }
-     })
-     if(checkedAns==props.questions.results[number].correct_answer){
-        let currentCount=props.count;
-        props.setCount(currentCount+1)
-        console.log(props.count)
-     }
-     
-    //increase qn no.
-    number=number+1;
-    if (number + 1 > 10) {
-      return 0;
+    if (number < 10) {
+      let checkedAns = "";
+      let array = [1, 2, 3, 4];
+      array.map((e) => {
+        let el = document.getElementById(e);
+        console.log(el);
+        if (el.checked) {
+          checkedAns = el.value;
+          console.log(checkedAns);
+          el.checked = false;
+        }
+      });
+      if (checkedAns == props.questions.results[number].correct_answer) {
+        let currentCount = props.count;
+        props.setCount(currentCount + 1);
+        console.log(props.count);
+      }
+
+      //increase qn no.
+      number = number + 1;
+      setNumber(number++);
     }
-    setNumber(number++);
   };
   // function to shuffle array
   function shuffleArray(array) {
@@ -38,46 +37,95 @@ const Question = (props) => {
     }
     console.log(array);
   }
-  let optionsArray = [
-    props.questions.results[number].correct_answer,
-    ...props.questions.results[number].incorrect_answers,
-  ];
-  console.log(optionsArray);
-  shuffleArray(optionsArray);
+
+  // if (number < 10) {
+  //   let optionsArray = [
+  //     props.questions.results[number].correct_answer,
+  //     ...props.questions.results[number].incorrect_answers,
+  //   ];
+  //   console.log(optionsArray);
+  //   shuffleArray(optionsArray);
+  //   return (
+  //     <div>
+  //       <div className='category'>
+  //         <div className='box'>
+  //           <div className='qnBox'>
+  //             <h3>{props.questions.results[number].question}</h3>
+
+  //             <div className='optionsBox'>
+  //               <label htmlFor='1' className='optionBox'>
+  //                 <input
+  //                   type='radio'
+  //                   name='optoin'
+  //                   id='1'
+  //                   className='option'
+  //                   value={optionsArray[0]}
+  //                 />
+  //                 {optionsArray[0]}
+  //               </label>
+  //               <label htmlFor='2' className='optionBox'>
+  //                 <input
+  //                   type='radio'
+  //                   name='optoin'
+  //                   id='2'
+  //                   className='option'
+  //                   value={optionsArray[1]}
+  //                 />
+  //                 {optionsArray[1]}
+  //               </label>
+  //               <label htmlFor='3' className='optionBox'>
+  //                 <input
+  //                   type='radio'
+  //                   name='optoin'
+  //                   id='3'
+  //                   className='option'
+  //                   value={optionsArray[2]}
+  //                 />
+  //                 {optionsArray[2]}
+  //               </label>
+  //               <label htmlFor='4' className='optionBox'>
+  //                 <input
+  //                   type='radio'
+  //                   name='optoin'
+  //                   id='4'
+  //                   className='option'
+  //                   value={optionsArray[3]}
+  //                 />
+  //                 {optionsArray[3]}
+  //               </label>
+  //             </div>
+  //           </div>
+  //           <div className='nextBtn'>
+  //             <button className='btn btnoutline-dark' onClick={nextQuestion}>
+  //               Next
+  //             </button>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
-      <div className='category'>
-        <div className='box'>
-          <div className='qnBox'>
-            <h3 >
-            {props.questions.results[number].question}
-            </h3>
+      <div className='results category'>
+        <div className='box resultsbox'>
           
-            <div className='optionsBox'>
-              <label htmlFor='1' className='optionBox'>
-                <input type='radio' name='optoin' id='1' className='option' value={optionsArray[0]} />
-                {optionsArray[0]}
-              </label>
-              <label htmlFor='2' className='optionBox'>
-                <input type='radio' name='optoin' id='2' className='option' value={optionsArray[1]}  />
-                {optionsArray[1]}
-              </label>
-              <label htmlFor='3' className='optionBox'>
-                <input type='radio' name='optoin' id='3' className='option' value={optionsArray[2]} />
-                {optionsArray[2]}
-              </label>
-              <label htmlFor='4' className='optionBox'>
-                <input type='radio' name='optoin' id='4' className='option' value={optionsArray[3]}  />
-                {optionsArray[3]}
-              </label>
-            </div>
-          </div>
-          <div className='nextBtn'>
-            <button className='btn btnoutline-dark' onClick={nextQuestion}>
-              Next
-            </button>
-          </div>
+           
+              {props.count > 5 ? (
+                <h1 className='text-center'>Congratulations,</h1>
+              ) : (
+                <h1 className='text-center'>Well tried,</h1>
+              )}
+             
+                <h4 className='m-4 text-center'>
+                  You scored {props.count} out of 10
+                </h4>
+                <div className="btns">
+                <Link to='/'><button className='btn m-3'>Retake Quiz</button></Link>
+                <button className='btn m-3'>Check Answers</button>
+                </div>
+             
         </div>
       </div>
     </div>

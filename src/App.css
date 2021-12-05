@@ -84,6 +84,12 @@ border: 1px solid #394857 !important;
 .selected{
   background-color: grey;
 }
-label{
-  padding:10px !important;
+/* result page */
+.results h4{
+  font-family: 'Baloo Tamma 2', cursive;
+}
+.results .btns{
+ 
+  display: flex;
+  justify-content: center;
 }
