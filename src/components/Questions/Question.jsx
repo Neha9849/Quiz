@@ -137,7 +137,7 @@ else{
         </div>
         {checkAnswers ? (
           <div className='answersBox'>
-            <h4 className='text-center'>Answers</h4>
+           
             <ol>
               {props.questions.results.map((i) => (
                 <li>

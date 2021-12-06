@@ -79,6 +79,12 @@ border: 1px solid #394857 !important;
   flex-direction: column;
   justify-content:end;
 }
+@media screen and (max-width: 700px) {
+ .qnPageBox{
+   min-width:100vw !important;
+ }
+}
+
 .qnBox .optionsBox{
 
   min-height: 300px;
@@ -108,7 +114,8 @@ border: 1px solid #394857 !important;
   flex-direction: column !important;
 }
 .resultbox{
-  min-height: 100vh;
+  min-width: 100vw;
+
 }
 .results h4{
   font-family: 'Baloo Tamma 2', cursive;
@@ -121,9 +128,20 @@ border: 1px solid #394857 !important;
 .results .answersBox{
 
   margin: 20px !important;
-  width: 80vw;
+ max-width: 600px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
 
 }
 .resultsbox{
-  margin: 50px;
+  margin: 50px 0px;
+}
+@media screen and (max-width: 500px){
+  .category .box{
+    width: 100vw;
+  }
+  .resultbox{
+    width: 100vw !important;
+  }
 }
