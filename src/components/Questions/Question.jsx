@@ -141,8 +141,8 @@ else{
             <ol>
               {props.questions.results.map((i) => (
                 <li>
-                  <b>{i.question}</b>
-                  <p>{i.correct_answer}</p>
+                  <b>{he.decode(i.question)}</b>
+                  <p>{he.decode(i.correct_answer)}</p>
                 </li>
               ))}
             </ol>

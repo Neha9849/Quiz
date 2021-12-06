@@ -67,14 +67,14 @@ border: 1px solid #394857 !important;
 .qnPageBox{
   min-width: 700px !important;
   height: 450px !important;
-  overflow: scroll;
+
   display: flex;
  justify-content: center;
   flex-direction: column;
 }
 .qnBox{
-  height: 400px !important;
-  overflow: scroll;
+  min-height: 400px !important;
+
   display: flex;
   flex-direction: column;
   justify-content:end;
