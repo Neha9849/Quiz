@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import he from 'he'
 const Question = (props) => {
   // question number state
   let [number, setNumber] = useState(0);
@@ -53,9 +54,9 @@ const Question = (props) => {
     return (
       <div>
         <div className='category'>
-          <div className='box'>
+          <div className='box qnPageBox'>
             <div className='qnBox'>
-              <h3>{props.questions.results[number].question}</h3>
+              <p className='m-2'>{he.decode(props.questions.results[number].question)}</p>
 
               <div className='optionsBox'>
                 <label htmlFor='1' className='optionBox'>
@@ -66,7 +67,7 @@ const Question = (props) => {
                     className='option'
                     value={optionsArray[0]}
                   />
-                  {optionsArray[0]}
+                  {he.decode(optionsArray[0])}
                 </label>
                 <label htmlFor='2' className='optionBox'>
                   <input
@@ -76,7 +77,7 @@ const Question = (props) => {
                     className='option'
                     value={optionsArray[1]}
                   />
-                  {optionsArray[1]}
+                  {he.decode(optionsArray[1])}
                 </label>
                 <label htmlFor='3' className='optionBox'>
                   <input
@@ -86,7 +87,7 @@ const Question = (props) => {
                     className='option'
                     value={optionsArray[2]}
                   />
-                  {optionsArray[2]}
+                  {he.decode(optionsArray[2])}
                 </label>
                 <label htmlFor='4' className='optionBox'>
                   <input
@@ -96,7 +97,7 @@ const Question = (props) => {
                     className='option'
                     value={optionsArray[3]}
                   />
-                  {optionsArray[3]}
+                  {he.decode(optionsArray[3])}
                 </label>
               </div>
             </div>
